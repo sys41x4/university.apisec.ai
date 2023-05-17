@@ -1,0 +1,25 @@
+https://university.apisec.ai/products/api-penetration-testing/categories/2150251486/posts/2157710611
+
+#Create New Packages (.deb)
+Firefox-foxyproxy
+burpsuite-latest
+
+# The JSON Web Token Toolkit v2
+https://github.com/ticarpi/jwt_tool
+Create python3 package of it
+
+
+## Useful Wordlists
+Create package of it
+
+SecLists (https://github.com/danielmiessler/SecLists)
+
+$ sudo wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip \
+&& sudo unzip SecList.zip \
+&& sudo rm -f SecList.zip
+
+Hacking-APIs (https://github.com/hAPI-hacker/Hacking-APIs)
+
+$ sudo wget -c https://github.com/hAPI-hacker/Hacking-APIs/archive/refs/heads/main.zip -O HackingAPIs.zip \
+&& sudo unzip HackingAPIs.zip \
+&& sudo rm -f HackingAPIs.zip
