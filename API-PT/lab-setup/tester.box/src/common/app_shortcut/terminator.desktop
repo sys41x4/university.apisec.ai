@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Terminator
+Comment=Multiple terminals in one window
+Exec=terminator
+Icon=terminator
+Categories=System;Utility;TerminalEmulator;
+Terminal=false
+
