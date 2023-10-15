@@ -28,7 +28,7 @@ set_rwx_perm_2_user $1 $TOOLS_DIR
 set_rwx_perm_2_user $1 $PYTHON_VENV_DIR
 set_rwx_perm_2_user $1 $HOME
 set_rwx_perm_2_user $1 $NO_VNC_HOME
-
+set_rwx_perm_2_user $1 "/entrypoint.sh"
 PATH="/venv/bin:$PATH"
 
 export GOPATH=$HOME/go

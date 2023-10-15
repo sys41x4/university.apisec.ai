@@ -3,17 +3,18 @@
 SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$SCRIPT_NAME"
 
+BURPSUITE_PATH="$TOOLS_DIR/burpsuite/burpsuite.community.latest.jar"
 install_tool() {
     # Get Burpsuite JAR File
     mkdir -p $TOOLS_DIR/burpsuite
-    wget https://portswigger.net/burp/releases/download -O $TOOLS_DIR/burpsuite/burpsuite.community.latest.jar && \
+    wget https://portswigger.net/burp/releases/download -O $BURPSUITE_PATH && \
     sudo ln -s $SCRIPT_PATH /opt/app/burpsuite-community && \
     sudo chmod +x /opt/app/burpsuite-community && \
     sudo ln -s /opt/app/burpsuite-community /usr/bin/burpsuite-community
 }
 
 remove_tool() {
-    sudo rm -rf $TOOLS_DIR/burpsuite/burpsuite.community.latest.jar /opt/app/burpsuite-community /usr/bin/burpsuite-community
+    sudo rm -rf $BURPSUITE_PATH /opt/app/burpsuite-community /usr/bin/burpsuite-community
     echo "Removed Burpsuite Community Installation"
 }
 
@@ -34,9 +35,9 @@ elif [[ $1 == "help" ]]; then
     echo "  remove  - Remove Burp Suite Community x64"
     echo "  help    - Display this help message and exit"
 else
-   BURPSUITE_exec="$(which java) -jar $TOOLS_DIR/burpsuite.latest.jar"
-   if [[ -n $BURPSUITE_PATH ]]; then
-       "$BURPSUITE_exec"
+   BURPSUITE_exec="$(which java) -jar $BURPSUITE_PATH"
+   if [ -f "$BURPSUITE_PATH" ]; then
+       $BURPSUITE_exec
    else
         echo "Invalid argument. Use 'help' for usage information."
    fi

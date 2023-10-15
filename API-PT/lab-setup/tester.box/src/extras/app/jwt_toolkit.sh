@@ -9,9 +9,9 @@ install_tool() {
     cd jwt_tool && \
     pip3 install termcolor cprint pycryptodomex requests && \
     sudo chmod +x $TOOLS_DIR/jwt_tool/jwt_tool.py && \
-    sudo ln -s $TOOLS_DIR/jwt_tool/jwt_tool.py /opt/app/jwt_tool.py && \
+    sudo ln -s -f $TOOLS_DIR/jwt_tool/jwt_tool.py /opt/app/jwt_tool.py && \
     sudo chmod +x /opt/app/jwt_tool.py && \
-    sudo ln -s /opt/app/jwt_tool.py /usr/bin/jwt_tool
+    sudo ln -s -f /opt/app/jwt_tool.py /usr/bin/jwt_tool
 }
 
 remove_tool() {
@@ -24,8 +24,6 @@ if [[ $1 == "install" ]]; then
     echo "JWT Toolkit Installation complete"
 
 elif [[ $1 == "update" ]]; then
-    rm -rf $TOOLS_DIR/burpsuite.community.latest.jar && \
-    echo "Removed old JWT Toolkit Installation" && \
     remove_tool && \
     echo "JWT Toolkit Removed Successfully" && \
     install_tool && \

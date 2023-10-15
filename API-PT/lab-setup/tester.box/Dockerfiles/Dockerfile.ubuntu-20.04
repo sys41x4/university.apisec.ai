@@ -1,8 +1,8 @@
 # This Dockerfile is used to build an headles vnc image based on Ubuntu:latest
-FROM ubuntu:latest
+FROM ubuntu:20.04
 LABEL maintainer="sys41x4@gmail.com"
 MAINTAINER Arijit Bhowmick "sys41x4@gmail.com"
-ENV REFRESHED_AT 2023-05-20
+ENV REFRESHED_AT 2023-10-14
 
 ## Connection ports for controlling the UI:
 # VNC port:5901
@@ -22,17 +22,19 @@ ENV HOME=/app \
     LANG='en_US.UTF-8' \
     LANGUAGE='en_US:en' \
     LC_ALL='en_US.UTF-8' \
-    INST_SCRIPTS=/app/install \
-    UPDT_SCRIPTS=/app/updates \
-    TOOLS_DIR=/app/tools \
-    DATA_DIR=/app/data \
-    PYTHON_VENV_DIR=/app/venv \
-    NO_VNC_HOME=/app/noVNC \
     DEBIAN_FRONTEND=noninteractive \
     VNC_COL_DEPTH=24 \
     VNC_RESOLUTION=1280x1024 \
     VNC_PW=password \
     VNC_VIEW_ONLY=false
+
+ENV INST_SCRIPTS=$HOME/install \
+    UPDT_SCRIPTS=$HOME/updates \
+    TOOLS_DIR=$HOME/tools \
+    DATA_DIR=$HOME/data \
+    PYTHON_VENV_DIR=$HOME/venv \
+    NO_VNC_HOME=$HOME/noVNC
+
 WORKDIR $HOME
 
 ### Add all install scripts for further steps
@@ -41,6 +43,7 @@ ADD ./src/debian/install/ $INST_SCRIPTS/
 ADD ./src/common/update/ $UPDT_SCRIPTS/
 ADD ./src/common/app_shortcut/ $HOME/shortcut/
 ADD ./src/extras/ $INST_SCRIPTS/
+ADD ./entrypoint.sh /
 
 
 ## Create Base Directories
@@ -83,5 +86,5 @@ RUN $INST_SCRIPTS/setup_user.sh $SUPERVISOR_USER
 WORKDIR /home/$SUPERVISOR_USER
 USER $SUPERVISOR_USER
 
-ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
+ENTRYPOINT "/entrypoint.sh"
 CMD ["--wait"]

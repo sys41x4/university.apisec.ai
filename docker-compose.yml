@@ -1,0 +1,47 @@
+version: '3'
+services:
+  tester_box:
+    image: sys41x4/university.apisec.ai:box.tester_ubuntu20.04
+    build:
+      context: ./API-PT/lab-setup/tester.box
+      dockerfile: ./Dockerfiles/Dockerfile
+    environment:
+      - BOX_NAME=tester
+      - HOME=/app
+      - SUPERVISOR_USER=app
+      - STARTUPDIR=/dockerstartup
+      - TZ=Asia/Kolkata
+      - INST_SCRIPTS=/app/install
+      - UPDT_SCRIPTS=/app/updates
+      - TOOLS_DIR=/app/tools
+      - DATA_DIR=/app/data
+      - PYTHON_VENV_DIR=/app/venv
+      - NO_VNC_HOME=/app/noVNC
+      - VNC_COL_DEPTH=24
+      - VNC_RESOLUTION=1280x1024
+      - VNC_PW=password
+      - VNC_VIEW_ONLY=false
+      - VNC_PORT=5901
+      - NO_VNC_PORT=6901
+    env_file:
+      - ./API-PT/lab-setup/tester.box/.env
+    ports:
+      - "5901:5901"
+      - "6901:6901"
+#    networks:
+#      - default
+    network_mode: "host"
+    volumes:
+      - tester_box_install:/app/install
+      - tester_box_updates:/app/updates
+      - tester_box_tools:/app/tools
+      - tester_box_data:/app/data
+      - tester_box_venv:/app/venv
+
+
+volumes:
+  tester_box_install:
+  tester_box_updates:
+  tester_box_tools:
+  tester_box_data:
+  tester_box_venv:

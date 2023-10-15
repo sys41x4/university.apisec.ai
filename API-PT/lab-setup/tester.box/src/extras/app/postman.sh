@@ -11,13 +11,13 @@ install_tool() {
     tar -xvf postman-linux-x64.tar.gz && \
     mv Postman ../ && \
     rm -rf $TOOLS_DIR/setup/postman-linux-x64.tar.gz && \
-    sudo ln -s $TOOLS_DIR/Postman/Postman /opt/app/postman && \
-    sudo ln -s /opt/app/postman /usr/bin/postman
+    sudo ln -s -f $TOOLS_DIR/Postman/Postman /opt/app/postman && \
+    sudo ln -s -f /opt/app/postman /usr/bin/postman
 
 }
 
 remove_tool() {
-    sudo rm -rf $TOOLS_DIR/postman /opt/app/postman /usr/bin/postman
+    sudo rm -rf $TOOLS_DIR/Postman /opt/app/postman /usr/bin/postman
     echo "Removed Postman Installation"
 }
 

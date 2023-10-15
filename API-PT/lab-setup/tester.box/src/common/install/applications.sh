@@ -9,6 +9,7 @@ apt-get install -y git \
         file \
         default-jdk \
         terminator \
+        nano \
         mousepad \
         python3 \
         python3-pip \

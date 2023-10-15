@@ -1,0 +1,3 @@
+# Ignore specific directories
+API-PT/lab-setup/vulnerable.box/boxes/
+API-PT/lab-setup/vulnerable.box/boxes/*

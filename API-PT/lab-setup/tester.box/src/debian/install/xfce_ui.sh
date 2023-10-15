@@ -11,4 +11,3 @@ apt-get install -y \
         libdbus-glib-1-2
 apt-get purge -y pm-utils *screensaver*
 apt-get clean -y
-

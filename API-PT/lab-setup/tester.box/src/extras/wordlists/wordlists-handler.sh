@@ -4,17 +4,17 @@ SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$SCRIPT_NAME"
 
 
-PACKAGES=("nmap" "amass" "gobuster" "dirb" "dirbuster" "mitmproxy")
+PACKAGES=("wordlists" "seclists")
 
 create_links(){
-    sudo mkdir -p /opt/scripts && \
-    sudo ln -s -f $SCRIPT_PATH /opt/scripts/security-testing-apps && \
-    sudo chmod +x /opt/scripts/security-testing-apps && \
-    sudo ln -s -f /opt/scripts/security-testing-apps /usr/bin/security-testing-apps
+    sudo mkdir -p /opt/wordlists && \
+    sudo ln -s -f $SCRIPT_PATH /opt/wordlists/wordlist-handler && \
+    sudo chmod +x /opt/wordlists/wordlist-handler && \
+    sudo ln -s -f /opt/wordlists/wordlist-handler /usr/bin/wordlist-handler
 }
 
 install_tool() {
-    # Install Security-testing tools
+    # Install Wordlists
     sudo apt-get update && \
 #    sudo apt-get install -y $1
     for package in "${PACKAGES[@]}"; do
@@ -30,7 +30,7 @@ remove_tool() {
       sudo apt purge -y "$package"
     done
     sudo apt-get clean -y
-    echo "Removed Security Testing Apps Installation"
+    echo "Removed Wordlists Installation"
 }
 
 upgrade_tool() {
@@ -42,19 +42,19 @@ upgrade_tool() {
 }
 
 if [[ $1 == "install" ]]; then
-    # Install Security Testing Apps
+    # Install Wordlists
     install_tool $PACKAGES
-    echo "Security Testing Apps Installation complete"
+    echo "Wordlists Installation complete"
 elif [[ $1 == "update" ]]; then
     upgrade_tool $PACKAGES
-    echo "Security Testing Apps Updation completed"
+    echo "Wordlists Updation completed"
 elif [[ $1 == "remove" ]]; then
     remove_tool $PACKAGES
 elif [[ $1 == "help" ]]; then
     echo "Usage: $SCRIPT_NAME [install/update/remove]"
-    echo "  install - Install Security Testing Tools"
-    echo "  update  - Update to latest Security Testing Tools"
-    echo "  remove  - Remove Security Testing Tools"
+    echo "  install - Install Wordlists"
+    echo "  update  - Update to latest Wordlists"
+    echo "  remove  - Remove Wordlists"
     echo "  help    - Display this help message and exit"
 else
     echo "Invalid argument. Use 'help' for usage information."
