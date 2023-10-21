@@ -1,7 +1,7 @@
 version: '3'
 services:
   tester_box:
-    image: sys41x4/university.apisec.ai:box.tester_ubuntu20.04
+    image: sys41x4/university.apisec.ai:box.tester_ubuntu22.04
     build:
       context: ./API-PT/lab-setup/tester.box
       dockerfile: ./Dockerfiles/Dockerfile

@@ -4,7 +4,7 @@ SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$SCRIPT_NAME"
 
 
-PACKAGES=("nmap" "amass" "gobuster" "dirb" "dirbuster" "mitmproxy")
+PACKAGES=("nmap" "amass" "gobuster" "dirb" "dirbuster" "mitmproxy" "zaproxy" "nikto" "wfuzz" "crunch")
 
 create_links(){
     sudo mkdir -p /opt/scripts && \
