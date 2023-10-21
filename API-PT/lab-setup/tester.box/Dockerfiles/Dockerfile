@@ -1,1 +1,1 @@
-Dockerfile.ubuntu-20.04
+Dockerfile.ubuntu-22.04
