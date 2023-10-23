@@ -1,8 +1,8 @@
 # setup tester box with tools
-Base Image : Ubuntu
-Author : Arijit Bhowmick [sys41x4]
-Image : sys41x4/university.apisec.ai:box.tester_ubuntu22.04
-container : api-pt.tester.box
+Base Image : Ubuntu<br>
+Author : Arijit Bhowmick [sys41x4]<br>
+Image : sys41x4/university.apisec.ai:box.tester_ubuntu22.04<br>
+container : api-pt.tester.box<br>
 
 ## Run Docker Compose to run the tester.box
 
