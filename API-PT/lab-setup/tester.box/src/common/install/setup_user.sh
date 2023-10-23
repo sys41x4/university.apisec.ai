@@ -32,6 +32,9 @@ set_rwx_perm_2_user $1 "/entrypoint.sh"
 PATH="/venv/bin:$PATH"
 
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$HOME/.local/bin:/usr/local/go/bin:$GOPATH/bin:$PATH
+
+cp $HOME/install/.bashrc $HOME/
+
 touch $HOME/.bashrc
 . $HOME/.bashrc
